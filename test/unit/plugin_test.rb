@@ -13,6 +13,13 @@ class EnsuresImmutabilityOfTest < Test::Unit::TestCase
     assert account.username == 'jgreen'
   end
 
+  def test_set_same
+    account = accounts(:wmoxam)
+    assert_nothing_thrown do
+      account.username = 'wmoxam'
+    end
+  end
+
   def test_assignment_if_nil
     account = accounts(:nil_account)
     assert_nothing_thrown do
