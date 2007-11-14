@@ -8,7 +8,7 @@ Example
 =======
 
 class Account < ActiveRecord::Base
-  ensures_immutability_of :username
+  ensures_immutability_of :username, :email
 end
 
 account = Account.create(:username => 'jgreen')
@@ -16,4 +16,4 @@ account = Account.create(:username => 'jgreen')
 account.update(:username => 'jgreen')  # raises RuntimeError
 
 
-Copyright (c) 2007 Wesley Moxam, released under the MIT license
+Copyright (c) 2007 Wesley Moxam - Savvica Inc, released under the MIT license
