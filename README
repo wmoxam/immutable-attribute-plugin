@@ -13,7 +13,7 @@ end
 
 account = Account.create(:username => 'jgreen')
 ...
-account.update(:username => 'jgreen')  # raises RuntimeError
+account.update(:username => 'jgreen')  # raises ActiveRecord::ImmutableAttributeError
 
 
 Copyright (c) 2007 Wesley Moxam - Savvica Inc, released under the MIT license
