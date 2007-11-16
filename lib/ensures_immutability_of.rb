@@ -1,3 +1,12 @@
+module ActiveRecord
+  class ImmutableAttributeError < ActiveRecordError
+    def initialize(message=nil)
+      super(message || 'Cannot modify immutable attribute')
+    end
+  end
+end
+
+
 module EnsuresImmutabilityOf
   def self.included(base)
     base.extend ClassMethods
@@ -11,7 +20,7 @@ module EnsuresImmutabilityOf
       attr_names.each do |attr_name|
         define_method "#{attr_name}=" do |new_value|
 	  return if read_attribute(attr_name) == new_value
-          read_attribute(attr_name).nil? ? write_attribute(attr_name, new_value) :  raise(RuntimeError, configuration[:message])
+          read_attribute(attr_name).nil? ? write_attribute(attr_name, new_value) :  raise(ActiveRecord::ImmutableAttributeError, configuration[:message])
         end
       end
     end

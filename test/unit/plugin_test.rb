@@ -30,14 +30,14 @@ class EnsuresImmutabilityOfTest < Test::Unit::TestCase
 
   def test_error_on_assignment
     account = accounts(:wmoxam)
-    assert_raise RuntimeError do
+    assert_raise ActiveRecord::ImmutableAttributeError do
       account.username = 'jgreen'
     end
   end
 
   def test_error_on_update
     account = accounts(:wmoxam)
-    assert_raise RuntimeError do
+    assert_raise ActiveRecord::ImmutableAttributeError do
       account.update_attributes(:username => 'jgreen')
     end
   end
