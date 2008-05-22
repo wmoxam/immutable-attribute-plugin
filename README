@@ -19,7 +19,7 @@ Collections can all be immutable as well (thanks to Dmitry Ratnikov on #rubyonra
 class Account  < ActiveRecord::Base
   has_many :infos
   ensures_immutability_of :username, :email, :infos   # note: this must come after the has_many declaration, otherwise
-  													  # AR will overwrite the setter
+                                                      # AR will overwrite the setter
 end
 
 account = Account.create(:username => 'wmoxam')
