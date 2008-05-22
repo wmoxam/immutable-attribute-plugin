@@ -26,4 +26,4 @@ account = Account.create(:username => 'wmoxam')
 account.infos = Info.find(:all, :conditions => ["id < ?", 3]
 account.infos =  Info.find(:all, :conditions => ["id > ?", 3]  # raises ActiveRecord::ImmutableAttributeError
 
-Copyright (c) 2007 Wesley Moxam - Savvica Inc, released under the MIT license
+Copyright (c) 2007-2008 Wesley Moxam - Savvica Inc, released under the MIT license
